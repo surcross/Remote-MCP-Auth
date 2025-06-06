@@ -1,5 +1,6 @@
 import { randomBytes } from 'crypto';
 
+// TODO: Revisit.
 export const postAuthorizeHandler = async (event) => {
   let redirect_uri, state;
 

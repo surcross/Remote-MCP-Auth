@@ -1,4 +1,4 @@
-# Remote MCP
+# Remote MCP PoC
 
 Proof of concept project implementing
 [Remote MCP Authorization](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization) for Claude.

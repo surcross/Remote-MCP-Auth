@@ -1,0 +1,40 @@
+{
+  "version": "2.0",
+  "routeKey": "$default",
+  "rawPath": "/",
+  "rawQueryString": "",
+  "headers": {
+    "accept": "text/event-stream",
+    "accept-encoding": "gzip, deflate, br",
+    "authorization": "Bearer access_token",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "host": "abc123.execute-api.us-east-1.amazonaws.com",
+    "traceparent": "00-8ca05fba448a9a7a1e256f7bd323588a-d4f080eb099c1521-01",
+    "user-agent": "python-httpx/0.27.0",
+    "x-amzn-trace-id": "Root=1-68426b8d-136cead765123628541001af",
+    "x-cloud-trace-context": "8ca05fba448a9a7a1e256f7bd323588a/15343905677418173729;o=1",
+    "x-forwarded-for": "34.162.46.92",
+    "x-forwarded-port": "443",
+    "x-forwarded-proto": "https"
+  },
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "abc123",
+    "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
+    "domainPrefix": "abc123",
+    "http": {
+      "method": "GET",
+      "path": "/",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "34.162.46.92",
+      "userAgent": "python-httpx/0.27.0"
+    },
+    "requestId": "LuW-KgYhoAMEPCg=",
+    "routeKey": "$default",
+    "stage": "$default",
+    "time": "06/Jun/2025:04:16:13 +0000",
+    "timeEpoch": 1749183373461
+  },
+  "isBase64Encoded": false
+}

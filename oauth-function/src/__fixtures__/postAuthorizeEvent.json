@@ -1,0 +1,47 @@
+{
+  "version": "2.0",
+  "routeKey": "$default",
+  "rawPath": "/authorize",
+  "rawQueryString": "",
+  "headers": {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9",
+    "cache-control": "no-cache",
+    "content-length": "220",
+    "content-type": "application/x-www-form-urlencoded",
+    "host": "abc123.execute-api.us-east-1.amazonaws.com",
+    "origin": "https://abc123.execute-api.us-east-1.amazonaws.com",
+    "pragma": "no-cache",
+    "priority": "u=0, i",
+    "referer": "https://abc123.execute-api.us-east-1.amazonaws.com/authorize?response_type=code&client_id=a43bf2a4-a236-41f1-a819-164e38380875&redirect_uri=https://claude.ai/api/mcp/auth_callback&scope=claudeai&code_challenge=1CjsqeQOk9rqC7Z5RsdhjLPEfoMdCsbLNrrEVWhdQnU&code_challenge_method=S256&state=oExiFeCxjXLyTUgltyQ76ls6kxvwMWkw1k5q4lhxuTk",
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "same-origin",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15",
+    "x-amzn-trace-id": "Root=1-68426b87-75ee3586601e4c782f4ffe82",
+    "x-forwarded-for": "76.168.99.91",
+    "x-forwarded-port": "443",
+    "x-forwarded-proto": "https"
+  },
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "abc123",
+    "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
+    "domainPrefix": "abc123",
+    "http": {
+      "method": "POST",
+      "path": "/authorize",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "76.168.99.91",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15"
+    },
+    "requestId": "LuW9RhFiIAMESCw=",
+    "routeKey": "$default",
+    "stage": "$default",
+    "time": "06/Jun/2025:04:16:07 +0000",
+    "timeEpoch": 1749183367722
+  },
+  "body": "Y2xpZW50X2lkPWE0M2JmMmE0LWEyMzYtNDFmMS1hODE5LTE2NGUzODM4MDg3NSZjb2RlX2NoYWxsZW5nZT0xQ2pzcWVRT2s5cnFDN1o1UnNkaGpMUEVmb01kQ3NiTE5yckVWV2hkUW5VJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmNsYXVkZS5haSUyRmFwaSUyRm1jcCUyRmF1dGhfY2FsbGJhY2smc3RhdGU9b0V4aUZlQ3hqWEx5VFVnbHR5UTc2bHM2a3h2d01Xa3cxazVxNGxoeHVUaw==",
+  "isBase64Encoded": true
+}

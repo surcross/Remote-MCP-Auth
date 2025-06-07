@@ -1,21 +1,28 @@
 import { randomUUID } from 'crypto';
 
-export const postRegisterHandler = async (event) => {
-  const body = JSON.parse(event.body);
-  const clientId = randomUUID();
+const generateClientId = () => randomUUID();
 
-  // TODO: Store client registration data for later validation.
+export const postRegisterHandler = (event) => {
+  const params = JSON.parse(event.body);
+
+  // TODO: Validate params.
+  console.log('params', JSON.stringify(params));
+
+  const clientId = generateClientId();
+
+  // TODO: Store clientId and params.
 
   return {
     statusCode: 201,
-    json: {
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
       client_id: clientId,
-      client_name: body.client_name,
-      grant_types: body.grant_types,
-      response_types: body.response_types,
-      token_endpoint_auth_method: body.token_endpoint_auth_method,
-      scope: body.scope,
-      redirect_uris: body.redirect_uris,
-    },
+      client_name: params.client_name,
+      grant_types: params.grant_types,
+      response_types: params.response_types,
+      token_endpoint_auth_method: params.token_endpoint_auth_method,
+      scope: params.scope,
+      redirect_uris: params.redirect_uris,
+    }),
   };
 };

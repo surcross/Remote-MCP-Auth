@@ -1,0 +1,7 @@
+{
+  "grant_type": "authorization_code",
+  "code": "ea721d446a2688fab49a2dddfa1c1b39a1dd832c1dfca383e5b3e586143eb00c",
+  "client_id": "86023533-0150-4a8f-8147-cfde548ec933",
+  "code_verifier": "nMTOCmOJjCjb6pDsgnzst9LJkASUGLmwJRs9HnpKL70",
+  "redirect_uri": "https://claude.ai/api/mcp/auth_callback"
+}

@@ -1,19 +1,19 @@
-export const getWellKnownHandler = async (event) => {
+export const getWellKnownHandler = (event) => {
   const issuer = `https://${event.requestContext.domainName}`;
 
   return {
-    json: {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
       issuer,
-      authorization_endpoint: `${issuer}/authorize`,
-      token_endpoint: `${issuer}/token`,
-      registration_endpoint: `${issuer}/register`,
+      authorization_endpoint: `${issuer}/oauth/authorize`,
+      token_endpoint: `${issuer}/oauth/token`,
+      registration_endpoint: `${issuer}/oauth/register`,
       grant_types_supported: [
         'authorization_code',
         'client_credentials',
       ],
-      code_challenge_methods_supported: [
-        'S256',
-      ],
-    },
+      code_challenge_methods_supported: ['S256'],
+    }),
   };
 };

@@ -1,8 +1,8 @@
 {
   "version": "2.0",
   "routeKey": "$default",
-  "rawPath": "/authorize",
-  "rawQueryString": "response_type=code&client_id=a43bf2a4-a236-41f1-a819-164e38380875&redirect_uri=https://claude.ai/api/mcp/auth_callback&scope=claudeai&code_challenge=1CjsqeQOk9rqC7Z5RsdhjLPEfoMdCsbLNrrEVWhdQnU&code_challenge_method=S256&state=oExiFeCxjXLyTUgltyQ76ls6kxvwMWkw1k5q4lhxuTk",
+  "rawPath": "/oauth/authorize",
+  "rawQueryString": "response_type=code&client_id=86023533-0150-4a8f-8147-cfde548ec933&redirect_uri=https://claude.ai/api/mcp/auth_callback&scope=claudeai&code_challenge=Ad6ADBIy3yiBS7hIm8rpw9HIsWG_NID-IpaM1WfvoJs&code_challenge_method=S256&state=kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ",
   "headers": {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "accept-encoding": "gzip, deflate, br",
@@ -21,22 +21,22 @@
     "x-forwarded-proto": "https"
   },
   "queryStringParameters": {
-    "client_id": "a43bf2a4-a236-41f1-a819-164e38380875",
-    "code_challenge": "1CjsqeQOk9rqC7Z5RsdhjLPEfoMdCsbLNrrEVWhdQnU",
+    "client_id": "86023533-0150-4a8f-8147-cfde548ec933",
+    "code_challenge": "Ad6ADBIy3yiBS7hIm8rpw9HIsWG_NID-IpaM1WfvoJs",
     "code_challenge_method": "S256",
     "redirect_uri": "https://claude.ai/api/mcp/auth_callback",
     "response_type": "code",
     "scope": "claudeai",
-    "state": "oExiFeCxjXLyTUgltyQ76ls6kxvwMWkw1k5q4lhxuTk"
+    "state": "kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ"
   },
   "requestContext": {
-    "accountId": "123456789012",
+    "accountId": "1234567890",
     "apiId": "abc123",
     "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
     "domainPrefix": "abc123",
     "http": {
       "method": "GET",
-      "path": "/authorize",
+      "path": "/oauth/authorize",
       "protocol": "HTTP/1.1",
       "sourceIp": "76.168.99.91",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15"

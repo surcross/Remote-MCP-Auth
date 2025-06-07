@@ -1,0 +1,7 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"access_token\":\"ACCESS_TOKEN\",\"token_type\":\"Bearer\",\"expires_in\":900,\"refresh_token\":\"REFRESH_TOKEN\",\"scope\":\"claudeai\"}"
+}

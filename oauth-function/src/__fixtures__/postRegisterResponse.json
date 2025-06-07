@@ -1,0 +1,7 @@
+{
+  "statusCode": 201,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"client_id\":\"86023533-0150-4a8f-8147-cfde548ec933\",\"client_name\":\"claudeai\",\"grant_types\":[\"authorization_code\",\"refresh_token\"],\"response_types\":[\"code\"],\"token_endpoint_auth_method\":\"none\",\"scope\":\"claudeai\",\"redirect_uris\":[\"https://claude.ai/api/mcp/auth_callback\"]}"
+}

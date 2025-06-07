@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "routeKey": "$default",
-  "rawPath": "/register",
+  "rawPath": "/oauth/register",
   "rawQueryString": "",
   "headers": {
     "accept": "*/*",
@@ -18,13 +18,13 @@
     "x-forwarded-proto": "https"
   },
   "requestContext": {
-    "accountId": "123456789012",
+    "accountId": "1234567890",
     "apiId": "abc123",
     "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
     "domainPrefix": "abc123",
     "http": {
       "method": "POST",
-      "path": "/register",
+      "path": "/oauth/register",
       "protocol": "HTTP/1.1",
       "sourceIp": "34.162.102.82",
       "userAgent": "python-httpx/0.27.0"

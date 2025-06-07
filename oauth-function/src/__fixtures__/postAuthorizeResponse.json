@@ -1,0 +1,6 @@
+{
+  "statusCode": 302,
+  "headers": {
+    "Location": "https://claude.ai/api/mcp/auth_callback?code=ea721d446a2688fab49a2dddfa1c1b39a1dd832c1dfca383e5b3e586143eb00c&state=kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ"
+  }
+}

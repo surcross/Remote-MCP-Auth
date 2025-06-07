@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "routeKey": "$default",
-  "rawPath": "/token",
+  "rawPath": "/oauth/token",
   "rawQueryString": "",
   "headers": {
     "accept": "*/*",
@@ -18,13 +18,13 @@
     "x-forwarded-proto": "https"
   },
   "requestContext": {
-    "accountId": "123456789012",
+    "accountId": "1234567890",
     "apiId": "abc123",
     "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
     "domainPrefix": "abc123",
     "http": {
       "method": "POST",
-      "path": "/token",
+      "path": "/oauth/token",
       "protocol": "HTTP/1.1",
       "sourceIp": "34.162.46.92",
       "userAgent": "python-httpx/0.27.0"
@@ -35,6 +35,6 @@
     "time": "06/Jun/2025:04:16:08 +0000",
     "timeEpoch": 1749183368314
   },
-  "body": "Z3JhbnRfdHlwZT1hdXRob3JpemF0aW9uX2NvZGUmY29kZT05ODgzNjVjOTY2Njk1YWU4N2I3YmI2MDQ4ZDNkMjYwY2ZmN2VlMGJiNTU0MjNjNDMzZDgxNjU1MDNmNmIyZDBmJmNsaWVudF9pZD1hNDNiZjJhNC1hMjM2LTQxZjEtYTgxOS0xNjRlMzgzODA4NzUmY29kZV92ZXJpZmllcj1BX1FxUHpmTW9UOGc5VUcteG5yeVBsWVowZm4zMG9RSmRRUFVFSkIwRFE0JnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmNsYXVkZS5haSUyRmFwaSUyRm1jcCUyRmF1dGhfY2FsbGJhY2s=",
+  "body": "Z3JhbnRfdHlwZT1hdXRob3JpemF0aW9uX2NvZGUmY29kZT1lYTcyMWQ0NDZhMjY4OGZhYjQ5YTJkZGRmYTFjMWIzOWExZGQ4MzJjMWRmY2EzODNlNWIzZTU4NjE0M2ViMDBjJmNsaWVudF9pZD04NjAyMzUzMy0wMTUwLTRhOGYtODE0Ny1jZmRlNTQ4ZWM5MzMmY29kZV92ZXJpZmllcj1uTVRPQ21PSmpDamI2cERzZ256c3Q5TEprQVNVR0xtd0pSczlIbnBLTDcwJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmNsYXVkZS5haSUyRmFwaSUyRm1jcCUyRmF1dGhfY2FsbGJhY2s=",
   "isBase64Encoded": true
 }

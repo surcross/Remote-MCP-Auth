@@ -1,34 +1,30 @@
 import { randomBytes } from 'crypto';
 
-// TODO: Revisit.
-export const postAuthorizeHandler = async (event) => {
-  let redirect_uri, state;
+const generateCode = () => randomBytes(32).toString('hex');
 
-  if (event.queryStringParameters) {
-    redirect_uri = event.queryStringParameters.redirect_uri;
-    state = event.queryStringParameters.state;
-  } else if (event.body) {
-    const formEncoded = event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString('utf8') : event.body;
-    const urlSearchParams = new URLSearchParams(formEncoded);
-    const body = Object.fromEntries(urlSearchParams);
-    redirect_uri = body.redirect_uri;
-    state = body.state;
-  }
+export const postAuthorizeHandler = (event) => {
+  const body = event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString('utf8') : event.body;
+  const params = Object.fromEntries(new URLSearchParams(body));
 
-  const code = randomBytes(32).toString('hex');
+  // TODO: Validate params.
+  console.log('params', JSON.stringify(params));
 
-  // TODO: Store { code, client_id, redirect_uri, code_challenge, expires_at: Date.now() + 600000 }
+  // The authorization code serves as a binding that ties the client ID (from the initial OAuth request) to the user ID
+  // (established during authentication), created when the user approves the client's access request.
 
-  let location = `${redirect_uri}?code=${code}`;
+  const code = generateCode();
 
-  if (state) {
-    location += `&state=${state}`;
+  // TODO: Store code and params.
+
+  const redirectUrl = new URL(params.redirect_uri);
+  redirectUrl.searchParams.set('code', code);
+
+  if (params.state) {
+    redirectUrl.searchParams.set('state', params.state);
   }
 
   return {
     statusCode: 302,
-    headers: {
-      Location: location,
-    },
+    headers: { Location: redirectUrl.toString() },
   };
 };

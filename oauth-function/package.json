@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "package": "rm -f oauth-function.zip && zip -j oauth-function.zip src/*"
+  }
+}

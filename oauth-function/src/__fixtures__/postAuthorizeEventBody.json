@@ -1,9 +1,0 @@
-{
-  "client_id": "a43bf2a4-a236-41f1-a819-164e38380875",
-  "code_challenge": "1CjsqeQOk9rqC7Z5RsdhjLPEfoMdCsbLNrrEVWhdQnU",
-  "code_challenge_method": "S256",
-  "redirect_uri": "https://claude.ai/api/mcp/auth_callback",
-  "response_type": "code",
-  "scope": "claudeai",
-  "state": "oExiFeCxjXLyTUgltyQ76ls6kxvwMWkw1k5q4lhxuTk"
-}

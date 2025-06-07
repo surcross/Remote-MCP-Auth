@@ -18,7 +18,7 @@
     "x-forwarded-proto": "https"
   },
   "requestContext": {
-    "accountId": "123456789012",
+    "accountId": "1234567890",
     "apiId": "abc123",
     "domainName": "abc123.execute-api.us-east-1.amazonaws.com",
     "domainPrefix": "abc123",

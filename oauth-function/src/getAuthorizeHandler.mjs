@@ -1,17 +1,19 @@
-export const getAuthorizeHandler = async (event) => {
+export const getAuthorizeHandler = (event) => {
   const params = event.queryStringParameters;
 
+  // TODO: Validate params.
+  console.log('params', JSON.stringify(params));
+
   return {
-    headers: {
-      'Content-Type': 'text/html',
-    },
+    statusCode: 200,
+    headers: { 'Content-Type': 'text/html' },
     body: `<html>
   <head>
     <title>Remote MCP PoC</title>
   </head>
   <body>
     <h1>Remote MCP PoC</h1>
-    <form action="/authorize" method="post">
+    <form action="/oauth/authorize" method="post">
       <input type="hidden" name="client_id" value="${params.client_id}">
       <input type="hidden" name="code_challenge" value="${params.code_challenge}">
       <input type="hidden" name="code_challenge_method" value="${params.code_challenge_method}">

@@ -1,0 +1,68 @@
+{
+  "students": [
+    {
+      "studentId": "BS-2401",
+      "name": "Ender Wiggin",
+      "age": 10,
+      "aptitudeScore": 99,
+      "battleExperience": "Expert",
+      "specialization": "Command"
+    },
+    {
+      "studentId": "BS-2507",
+      "name": "Bean",
+      "age": 8,
+      "aptitudeScore": 95,
+      "battleExperience": "Advanced",
+      "specialization": "Strategy"
+    },
+    {
+      "studentId": "BS-2198",
+      "name": "Bonzo Madrid",
+      "age": 12,
+      "aptitudeScore": 88,
+      "battleExperience": "Advanced",
+      "specialization": "Command"
+    },
+    {
+      "studentId": "BS-2612",
+      "name": "Crazy Tom",
+      "age": 11,
+      "aptitudeScore": 87,
+      "battleExperience": "Intermediate",
+      "specialization": "Assault"
+    },
+    {
+      "studentId": "BS-2345",
+      "name": "Hot Soup",
+      "age": 9,
+      "aptitudeScore": 82,
+      "battleExperience": "Intermediate",
+      "specialization": "Defense"
+    },
+    {
+      "studentId": "BS-2234",
+      "name": "Bernard",
+      "age": 11,
+      "aptitudeScore": 85,
+      "battleExperience": "Advanced",
+      "specialization": "Assault"
+    },
+    {
+      "studentId": "BS-2156",
+      "name": "Rose the Nose",
+      "age": 13,
+      "aptitudeScore": 86,
+      "battleExperience": "Advanced",
+      "specialization": "Command"
+    },
+    {
+      "studentId": "BS-2389",
+      "name": "Dink Meeker",
+      "age": 12,
+      "aptitudeScore": 84,
+      "battleExperience": "Intermediate",
+      "specialization": "Defense"
+    }
+  ]
+}

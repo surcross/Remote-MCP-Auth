@@ -1,0 +1,75 @@
+{
+  "armies": [
+    {
+      "armyName": "Dragon Army",
+      "commanderId": "BS-2401",
+      "commanderName": "Ender Wiggin",
+      "soldiers": [
+        {
+          "studentId": "BS-2507",
+          "name": "Bean",
+          "rank": "Toon Leader",
+          "battlesWon": 8
+        },
+        {
+          "studentId": "BS-2612",
+          "name": "Crazy Tom",
+          "rank": "Toon Leader",
+          "battlesWon": 7
+        },
+        {
+          "studentId": "BS-2345",
+          "name": "Hot Soup",
+          "rank": "Soldier",
+          "battlesWon": 6
+        }
+      ],
+      "armyRecord": {
+        "wins": 12,
+        "losses": 0
+      }
+    },
+    {
+      "armyName": "Salamander Army",
+      "commanderId": "BS-2198",
+      "commanderName": "Bonzo Madrid",
+      "soldiers": [
+        {
+          "studentId": "BS-2234",
+          "name": "Bernard",
+          "rank": "Toon Leader",
+          "battlesWon": 10
+        }
+      ],
+      "armyRecord": {
+        "wins": 15,
+        "losses": 3
+      },
+      "knownTactics": [
+        "Wall formations",
+        "Aggressive rushes"
+      ]
+    },
+    {
+      "armyName": "Phoenix Army",
+      "commanderId": "BS-2156",
+      "commanderName": "Rose the Nose",
+      "soldiers": [
+        {
+          "studentId": "BS-2389",
+          "name": "Dink Meeker",
+          "rank": "Toon Leader",
+          "battlesWon": 6
+        }
+      ],
+      "armyRecord": {
+        "wins": 8,
+        "losses": 7
+      },
+      "knownTactics": [
+        "Defensive positioning",
+        "Counter-attacks"
+      ]
+    }
+  ]
+}

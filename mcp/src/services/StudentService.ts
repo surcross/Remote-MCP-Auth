@@ -20,6 +20,12 @@ export class StudentService {
     this.students = JSON.parse(studentsJson).students;
   }
 
+  public getStudent(id: string): Student | null {
+    const student = this.students.find((student) => student.studentId === id);
+
+    return student || null;
+  }
+
   public getStudentInfo(name: string): Student | null {
     const student = this.students.find((student) => student.name.toLowerCase() === name.toLowerCase());
 

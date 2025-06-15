@@ -15,11 +15,21 @@ const studentService = new StudentService();
 server.tool(
   'get-my-army',
   'Get information about your army including soldiers and battle record',
-  {
-    studentId: z.string().describe('Name of the student'),
-  },
-  ({ studentId }) => {
-    const myArmy = armyService.getMyArmy(studentId);
+  ({ authInfo }) => {
+    if (!authInfo) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: 'Unauthorized',
+          },
+        ],
+      }
+    }
+
+    console.log(authInfo);
+
+    const myArmy = armyService.getMyArmy(authInfo.clientId);
 
     return {
       content: [
@@ -38,7 +48,20 @@ server.tool(
   {
     armyName: z.string().describe('Name of the opponent army to research'),
   },
-  ({ armyName }) => {
+  ({ armyName }, { authInfo }) => {
+    if (!authInfo) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: 'Unauthorized',
+          },
+        ],
+      }
+    }
+
+    console.log(authInfo);
+
     const opponentArmy = armyService.getOpponentArmy(armyName);
 
     return {
@@ -58,7 +81,20 @@ server.tool(
   {
     studentName: z.string().describe('Name of the student to look up'),
   },
-  ({ studentName }) => {
+  ({ studentName }, { authInfo }) => {
+    if (!authInfo) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: 'Unauthorized',
+          },
+        ],
+      }
+    }
+
+    console.log(authInfo);
+
     const studentInfo = studentService.getStudentInfo(studentName);
 
     return {

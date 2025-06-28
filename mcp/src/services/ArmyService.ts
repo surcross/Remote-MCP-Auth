@@ -23,7 +23,7 @@ interface Army {
 }
 
 export class ArmyService {
-  private armies: Army[];
+  private readonly armies: Army[];
 
   constructor() {
     const armiesPath = join(__dirname, 'armies.json');
@@ -32,7 +32,7 @@ export class ArmyService {
     this.armies = JSON.parse(armiesJson).armies;
   }
 
-  getMyArmy(studentId: string): Army | null {
+  public getMyArmy(studentId: string): Army | null {
     const army = this.armies.find((army) =>
       army.commanderId === studentId ||
       army.soldiers.some((soldier) => soldier.studentId === studentId)
@@ -41,7 +41,7 @@ export class ArmyService {
     return army || null;
   }
 
-  getOpponentArmy(name: string): Army | null {
+  public getOpponentArmy(name: string): Army | null {
     const army = this.armies.find((army) => army.armyName.toLowerCase() === name.toLowerCase());
 
     return army || null;

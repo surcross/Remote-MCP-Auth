@@ -1,18 +1,19 @@
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { Request, Response } from 'express';
 
+import { McpServer } from '../mcp/McpServer';
+
 interface Options {
-  server: McpServer;
+  mcpServer: McpServer;
 }
 
 export class McpSseController {
-  private readonly server: McpServer;
+  private readonly mcpServer: McpServer;
 
   private readonly transportsMap: Map<string, SSEServerTransport> = new Map();
 
-  constructor({ server }: Options) {
-    this.server = server;
+  constructor({ mcpServer }: Options) {
+    this.mcpServer = mcpServer;
 
     this.getSse = this.getSse.bind(this);
     this.postMessages = this.postMessages.bind(this);
@@ -27,7 +28,7 @@ export class McpSseController {
       this.transportsMap.delete(transport.sessionId);
     });
 
-    await this.server.connect(transport);
+    await this.mcpServer.connect(transport);
   }
 
   public async postMessages(req: Request, res: Response): Promise<void> {

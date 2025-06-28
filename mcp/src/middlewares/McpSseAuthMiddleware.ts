@@ -33,17 +33,17 @@ export class McpSseAuthMiddleware {
       return;
     }
 
-    const studentId = this.tokenService.validateToken(token);
+    const clientId = this.tokenService.validateToken(token);
 
-    if (!studentId) {
+    if (!clientId) {
       res.status(401).send('Unauthorized');
       return;
     }
 
     req.auth = {
-      token,
-      clientId: studentId,
+      clientId,
       scopes: [],
+      token,
     };
 
     next();

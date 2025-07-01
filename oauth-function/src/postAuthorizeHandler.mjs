@@ -1,20 +1,25 @@
-import { randomBytes } from 'crypto';
+import { createCode } from './authCodes.mjs';
 
-const generateCode = () => randomBytes(32).toString('hex');
-
-export const postAuthorizeHandler = (event) => {
+export const postAuthorizeHandler = async (event) => {
   const body = event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString('utf8') : event.body;
   const params = Object.fromEntries(new URLSearchParams(body));
 
   // TODO: Validate params.
   console.log('params', JSON.stringify(params));
 
-  // The authorization code serves as a binding that ties the client ID (from the initial OAuth request) to the user ID
-  // (established during authentication), created when the user approves the client's access request.
+  if (!params.student_id) {
+    return { statusCode: 400 };
+  }
 
-  const code = generateCode();
-
-  // TODO: Store code and params.
+  // TODO: Store the authorization `code` to bind the `client_id` to the authenticated user's consent, along with
+  // `code_challenge`, `redirect_uri`, and `scope` for validation during token exchange.
+  let code;
+  try {
+    code = await createCode(params.student_id);
+  } catch (error) {
+    console.error(error);
+    return { statusCode: 500 };
+  }
 
   const redirectUrl = new URL(params.redirect_uri);
   redirectUrl.searchParams.set('code', code);

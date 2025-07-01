@@ -1,5 +1,10 @@
 {
   "scripts": {
+    "generate-secret": "node -e \"console.log(require('crypto').randomBytes(32).toString('base64'))\"",
     "package": "rm -f oauth-function.zip && zip -j oauth-function.zip src/*"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.840.0",
+    "@aws-sdk/lib-dynamodb": "^3.840.0"
   }
 }

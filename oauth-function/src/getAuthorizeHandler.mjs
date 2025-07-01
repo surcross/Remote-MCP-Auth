@@ -1,7 +1,7 @@
 export const getAuthorizeHandler = (event) => {
   const params = event.queryStringParameters;
 
-  // TODO: Validate params.
+  // TODO: Validate params, optionally store instead of passing through the form.
   console.log('params', JSON.stringify(params));
 
   return {
@@ -9,11 +9,12 @@ export const getAuthorizeHandler = (event) => {
     headers: { 'Content-Type': 'text/html' },
     body: `<html>
   <head>
-    <title>Remote MCP PoC</title>
+    <title>Battle School Computer</title>
   </head>
   <body>
-    <h1>Remote MCP PoC</h1>
+    <h1>Battle School Computer</h1>
     <form action="/oauth/authorize" method="post">
+      <input name="student_id" placeholder="Student ID">
       <input type="hidden" name="client_id" value="${params.client_id}">
       <input type="hidden" name="code_challenge" value="${params.code_challenge}">
       <input type="hidden" name="code_challenge_method" value="${params.code_challenge_method}">

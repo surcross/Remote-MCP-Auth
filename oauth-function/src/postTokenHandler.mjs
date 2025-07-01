@@ -1,17 +1,38 @@
-const generateAccessToken = (expiresIn) => 'ACCESS_TOKEN';
-const generateRefreshToken = (expiresIn) => 'REFRESH_TOKEN';
+import { deleteCode, findCode } from './authCodes.mjs';
+import { createAccessToken, createRefreshToken } from './tokens.mjs';
 
-export const postTokenHandler = (event) => {
+export const postTokenHandler = async (event) => {
   const body = event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString('utf8') : event.body;
   const params = Object.fromEntries(new URLSearchParams(body));
 
   // TODO: Validate params.
   console.log('params', JSON.stringify(params));
 
-  const accessTokenExpiresIn = 15 * 60; // 15 minutes
-  const refreshTokenExpiresIn = 30 * 24 * 60 * 60; // 30 days
-  const accessToken = generateAccessToken(accessTokenExpiresIn);
-  const refreshToken = generateRefreshToken(refreshTokenExpiresIn);
+  if (!params.code) {
+    return { statusCode: 400 };
+  }
+
+  let code;
+  try {
+    code = await findCode(params.code);
+  } catch (error) {
+    console.error(error);
+    return { statusCode: 500 };
+  }
+
+  if (!code) {
+    return { statusCode: 400 };
+  }
+
+  try {
+    await deleteCode(code.code);
+  } catch (error) {
+    console.error(error);
+    return { statusCode: 500 };
+  }
+
+  const { accessToken, expiresIn } = createAccessToken(code.studentId);
+  const { refreshToken } = createRefreshToken(code.studentId);
   // Comes from the previously stored params.
   const scope = 'claudeai';
 
@@ -21,7 +42,7 @@ export const postTokenHandler = (event) => {
     body: JSON.stringify({
       access_token: accessToken,
       token_type: 'Bearer',
-      expires_in: accessTokenExpiresIn,
+      expires_in: expiresIn,
       refresh_token: refreshToken,
       scope: scope,
     }),

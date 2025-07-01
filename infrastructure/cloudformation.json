@@ -10,6 +10,31 @@
       }
     }
   },
+  "Parameters": {
+    "AccessTokenSecret": {
+      "Description": "Access Token Secret",
+      "Type": "String"
+    },
+    "AccessTokenTtl": {
+      "Default": 900,
+      "Description": "Access Token TTL (in seconds)",
+      "Type": "Number"
+    },
+    "AuthCodesTtl": {
+      "Default": 600,
+      "Description": "Auth Codes TTL (in seconds)",
+      "Type": "Number"
+    },
+    "RefreshTokenSecret": {
+      "Description": "Refresh Token Secret",
+      "Type": "String"
+    },
+    "RefreshTokenTtl": {
+      "Default": 2592000,
+      "Description": "Refresh Token TTL (in seconds)",
+      "Type": "Number"
+    }
+  },
   "Resources": {
     "ApiGateway": {
       "Type": "AWS::ApiGatewayV2::Api",
@@ -67,6 +92,31 @@
         "StageName": "$default"
       }
     },
+    "AuthCodesTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "code",
+            "AttributeType": "S"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "code",
+            "KeyType": "HASH"
+          }
+        ],
+        "TableName": {
+          "Fn::Sub": "${AWS::StackName}-auth-codes-table"
+        },
+        "TimeToLiveSpecification": {
+          "AttributeName": "expiration",
+          "Enabled": true
+        }
+      }
+    },
     "OAuthFunctionRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -114,6 +164,28 @@
               ]
             },
             "PolicyName": "AWSLambdaBasicExecutionRole"
+          },
+          {
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "dynamodb:DeleteItem",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "AuthCodesTable",
+                      "Arn"
+                    ]
+                  }
+                }
+              ]
+            },
+            "PolicyName": "CustomPolicy"
           }
         ],
         "RoleName": {
@@ -129,6 +201,28 @@
         ],
         "Code": {
           "ZipFile": "exports.handler = async (event) => ({ body: JSON.stringify(event), headers: { 'content-type': 'application/json' }, statusCode: 200 });"
+        },
+        "Environment": {
+          "Variables": {
+            "ACCESS_TOKEN_SECRET": {
+              "Ref": "AccessTokenSecret"
+            },
+            "ACCESS_TOKEN_TTL": {
+              "Ref": "AccessTokenTtl"
+            },
+            "AUTH_CODES_TABLE_NAME": {
+              "Ref": "AuthCodesTable"
+            },
+            "AUTH_CODES_TTL": {
+              "Ref": "AuthCodesTtl"
+            },
+            "REFRESH_TOKEN_SECRET": {
+              "Ref": "RefreshTokenSecret"
+            },
+            "REFRESH_TOKEN_TTL": {
+              "Ref": "RefreshTokenTtl"
+            }
+          }
         },
         "FunctionName": {
           "Fn::Sub": "${AWS::StackName}-oauth-function"

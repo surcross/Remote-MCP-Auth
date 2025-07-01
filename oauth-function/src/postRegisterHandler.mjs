@@ -10,7 +10,7 @@ export const postRegisterHandler = (event) => {
 
   const clientId = generateClientId();
 
-  // TODO: Store clientId and params.
+  // TODO: Store `clientId` with params.
 
   return {
     statusCode: 201,

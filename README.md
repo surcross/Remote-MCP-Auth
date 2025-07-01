@@ -56,3 +56,5 @@ Notes:
 * Authorization page flow - the web page implementation served under `GET /oauth/authorize` - is an implementation
   detail, not standardized, as well as the endpoint `POST /oauth/authorize` itself and it's implementation, since it's
   used by that web page only.
+
+Test: `npx @modelcontextprotocol/inspector@0.13` (using older version)

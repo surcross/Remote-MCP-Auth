@@ -1,4 +1,4 @@
-import { OAUTH_API_BASE_URL } from './constants';
+import { ACCESS_TOKEN_SECRET, OAUTH_API_BASE_URL } from './constants';
 
 import { McpSseController } from './controllers/McpSseController';
 import { OAuthController } from './controllers/OAuthController';
@@ -16,6 +16,7 @@ const armyService = new ArmyService();
 const studentService = new StudentService();
 
 const tokenService = new TokenService({
+  accessTokenSecret: ACCESS_TOKEN_SECRET,
   studentService,
 });
 

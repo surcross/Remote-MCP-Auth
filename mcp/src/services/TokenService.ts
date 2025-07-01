@@ -1,20 +1,34 @@
+import { verify } from 'jsonwebtoken';
+
 import { StudentService } from './StudentService';
 
 interface Options {
+  accessTokenSecret: string;
   studentService: StudentService;
 }
 
 export class TokenService {
+  private readonly accessTokenSecret: string;
   private readonly studentService: StudentService;
 
-  constructor({ studentService }: Options) {
+  constructor({ accessTokenSecret, studentService }: Options) {
+    this.accessTokenSecret = accessTokenSecret;
     this.studentService = studentService;
   }
 
   public validateToken(token: string): string | null {
-    const studentId = Buffer.from(token, 'base64').toString('utf-8');
+    let decoded;
+    try {
+      decoded = verify(token, this.accessTokenSecret);
+    } catch {
+      return null;
+    }
 
-    const student = this.studentService.getStudent(studentId);
+    if (!decoded.sub) {
+      return null;
+    }
+
+    const student = this.studentService.getStudent(decoded.sub as string);
 
     if (!student) {
       return null;

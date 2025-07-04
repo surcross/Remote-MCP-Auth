@@ -29,7 +29,7 @@ export const handler = async (event) => {
   }
 
   try {
-    const response = route.handler(event);
+    const response = await route.handler(event);
 
     console.log('response', JSON.stringify(response));
 

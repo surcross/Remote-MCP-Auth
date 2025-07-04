@@ -9,7 +9,7 @@ const dynamoDbDocumentClient = DynamoDBDocumentClient.from(dynamoDbClient);
 
 const generateCode = () => randomBytes(32).toString('hex');
 
-export const createCode = async (studentId) => {
+export const createCode = async (studentId, codeChallenge) => {
   const code = generateCode();
 
   const now = Math.floor(Date.now() / 1000);
@@ -17,6 +17,7 @@ export const createCode = async (studentId) => {
 
   const item = {
     code,
+    codeChallenge,
     expiration,
     studentId,
   };

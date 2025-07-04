@@ -1,9 +1,10 @@
 {
-  "client_id": "86023533-0150-4a8f-8147-cfde548ec933",
-  "code_challenge": "Ad6ADBIy3yiBS7hIm8rpw9HIsWG_NID-IpaM1WfvoJs",
+  "student_id": "BS-2401",
+  "client_id": "98f974d2-5ab1-467d-b043-64edbb2a840b",
+  "code_challenge": "qpxvR2wuni9VNrukgHOgVqGc1WljDfVbDFIYtwmKeos",
   "code_challenge_method": "S256",
   "redirect_uri": "https://claude.ai/api/mcp/auth_callback",
   "response_type": "code",
   "scope": "claudeai",
-  "state": "kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ"
+  "state": "MAtaiBZWWmmNvjGaDFEiLuAbSv_FUJ3k91XYnWcZpts"
 }

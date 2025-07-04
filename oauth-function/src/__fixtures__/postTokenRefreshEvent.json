@@ -6,7 +6,7 @@
   "headers": {
     "accept": "*/*",
     "accept-encoding": "gzip, deflate, br",
-    "content-length": "269",
+    "content-length": "213",
     "content-type": "application/x-www-form-urlencoded",
     "host": "abc123.execute-api.us-east-1.amazonaws.com",
     "traceparent": "00-41b1d96fa83ea25ee17ee7d67e7b9df8-019f4392385722f0-01",
@@ -35,6 +35,6 @@
     "time": "06/Jun/2025:04:16:08 +0000",
     "timeEpoch": 1749183368314
   },
-  "body": "Z3JhbnRfdHlwZT1hdXRob3JpemF0aW9uX2NvZGUmY29kZT03ZmM4Y2RlM2RkYWY2YjA0ODgzNjhmZmEyZTRmM2IzMTg2MWMwZTk4NjMwYzM2YTA3NTgyY2ExOTE0ODMzOGQyJmNsaWVudF9pZD05OGY5NzRkMi01YWIxLTQ2N2QtYjA0My02NGVkYmIyYTg0MGImY29kZV92ZXJpZmllcj1qOGpzOUdVblJ6Sm9lWWx4aWNSdEw0eHRrbTItOVRSdGYxcmlsUnlobk5VJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmNsYXVkZS5haSUyRmFwaSUyRm1jcCUyRmF1dGhfY2FsbGJhY2s=",
+  "body": "Z3JhbnRfdHlwZT1yZWZyZXNoX3Rva2VuJnJlZnJlc2hfdG9rZW49ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnpkV0lpT2lKQ1V5MHlOREF4SWl3aVpYaHdJam94TnpVME1qVXhOemcxZlEuYnRaNVZWQjRFUDdrbzRJZFY2QlRpWVctN0NlTjFPUUtMcDhDRjBFRGNxUSZjbGllbnRfaWQ9OThmOTc0ZDItNWFiMS00NjdkLWIwNDMtNjRlZGJiMmE4NDBi",
   "isBase64Encoded": true
 }

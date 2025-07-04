@@ -2,7 +2,7 @@
   "version": "2.0",
   "routeKey": "$default",
   "rawPath": "/oauth/authorize",
-  "rawQueryString": "response_type=code&client_id=86023533-0150-4a8f-8147-cfde548ec933&redirect_uri=https://claude.ai/api/mcp/auth_callback&scope=claudeai&code_challenge=Ad6ADBIy3yiBS7hIm8rpw9HIsWG_NID-IpaM1WfvoJs&code_challenge_method=S256&state=kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ",
+  "rawQueryString": "response_type=code&client_id=98f974d2-5ab1-467d-b043-64edbb2a840b&redirect_uri=https%3A%2F%2Fclaude.ai%2Fapi%2Fmcp%2Fauth_callback&scope=claudeai&code_challenge=qpxvR2wuni9VNrukgHOgVqGc1WljDfVbDFIYtwmKeos&code_challenge_method=S256&state=MAtaiBZWWmmNvjGaDFEiLuAbSv_FUJ3k91XYnWcZpts",
   "headers": {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "accept-encoding": "gzip, deflate, br",
@@ -21,13 +21,13 @@
     "x-forwarded-proto": "https"
   },
   "queryStringParameters": {
-    "client_id": "86023533-0150-4a8f-8147-cfde548ec933",
-    "code_challenge": "Ad6ADBIy3yiBS7hIm8rpw9HIsWG_NID-IpaM1WfvoJs",
+    "client_id": "98f974d2-5ab1-467d-b043-64edbb2a840b",
+    "code_challenge": "qpxvR2wuni9VNrukgHOgVqGc1WljDfVbDFIYtwmKeos",
     "code_challenge_method": "S256",
     "redirect_uri": "https://claude.ai/api/mcp/auth_callback",
     "response_type": "code",
     "scope": "claudeai",
-    "state": "kXZoKd7C4gBnIY5stIItUJ14ykFzZoWkLmLqJVjCykQ"
+    "state": "MAtaiBZWWmmNvjGaDFEiLuAbSv_FUJ3k91XYnWcZpts"
   },
   "requestContext": {
     "accountId": "1234567890",

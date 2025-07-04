@@ -3,5 +3,5 @@
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "{\"client_id\":\"86023533-0150-4a8f-8147-cfde548ec933\",\"client_name\":\"claudeai\",\"grant_types\":[\"authorization_code\",\"refresh_token\"],\"response_types\":[\"code\"],\"token_endpoint_auth_method\":\"none\",\"scope\":\"claudeai\",\"redirect_uris\":[\"https://claude.ai/api/mcp/auth_callback\"]}"
+  "body": "{\"client_id\":\"98f974d2-5ab1-467d-b043-64edbb2a840b\",\"client_name\":\"claudeai\",\"grant_types\":[\"authorization_code\",\"refresh_token\"],\"response_types\":[\"code\"],\"token_endpoint_auth_method\":\"none\",\"scope\":\"claudeai\",\"redirect_uris\":[\"https://claude.ai/api/mcp/auth_callback\"]}"
 }

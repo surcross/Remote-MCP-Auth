@@ -58,3 +58,20 @@ Notes:
   used by that web page only.
 
 Test: `npx @modelcontextprotocol/inspector@0.13` (using older version)
+
+## Google Cloud Run
+
+Create project
+Create repository in Artifact Registry
+Create Docker image and push to AR 
+
+```sh
+docker tag app us-west1-docker.pkg.dev/experiments-project/experiments-repo/mcp
+docker push us-west1-docker.pkg.dev/experiments-project/experiments-repo/mcp
+```
+
+Deploy image to Cloud Run, require no authentication, configure max possible timeout (3600 seconds).
+
+Add env vars:
+ACCESS_TOKEN_SECRET
+OAUTH_API_BASE_URL

@@ -25,7 +25,7 @@ export class OAuthController {
       return;
     }
 
-    res.send(wellKnown);
+    res.json(wellKnown);
   }
 
   private async fetchOAuthWellKnown() {

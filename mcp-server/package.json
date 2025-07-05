@@ -1,0 +1,34 @@
+{
+  "name": "@remote-mcp-auth/mcp-server",
+  "version": "1.0.0",
+  "description": "Remote MCP Auth - MCP Server",
+  "scripts": {
+    "dev": "tsx --env-file=.env src/app",
+    "start": "tsx src/app",
+    "typecheck": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loginov-rocks/Remote-MCP-Auth.git"
+  },
+  "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/loginov-rocks/Remote-MCP-Auth/issues"
+  },
+  "homepage": "https://github.com/loginov-rocks/Remote-MCP-Auth",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.25.74"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.15.30",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,6 +1,7 @@
 import { ACCESS_TOKEN_SECRET, OAUTH_API_BASE_URL } from './constants';
 
 import { McpSseController } from './controllers/McpSseController';
+import { McpStreamableController } from './controllers/McpStreamableController';
 import { OAuthController } from './controllers/OAuthController';
 
 import { McpServer } from './mcp/McpServer';
@@ -32,6 +33,10 @@ export const mcpSseAuthMiddleware = new McpSseAuthMiddleware({
 export const mcpSseController = new McpSseController({
   mcpServer,
 })
+
+export const mcpStreamableController = new McpStreamableController({
+  mcpServer,
+});
 
 export const oauthController = new OAuthController({
   oauthApiBaseUrl: OAUTH_API_BASE_URL,

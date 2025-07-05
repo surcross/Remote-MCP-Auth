@@ -43,7 +43,7 @@ export class McpServer {
 
   private init() {
     this.server = new McpServerSdk({
-      name: 'example-server',
+      name: 'Battle-School-Computer',
       version: '1.0.0',
     });
 

@@ -1,4 +1,4 @@
-# Remote MCP PoC
+# Remote MCP Auth
 
 Proof of concept project implementing
 [Remote MCP Authorization](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization) for Claude.
@@ -66,8 +66,9 @@ Create repository in Artifact Registry
 Create Docker image and push to AR 
 
 ```sh
-docker tag app us-west1-docker.pkg.dev/experiments-project/experiments-repo/mcp
-docker push us-west1-docker.pkg.dev/experiments-project/experiments-repo/mcp
+docker build -t mcp-server .
+docker tag mcp-server us-west1-docker.pkg.dev/project/repo/mcp-server
+docker push us-west1-docker.pkg.dev/project/repo/mcp-server
 ```
 
 Deploy image to Cloud Run, require no authentication, configure max possible timeout (3600 seconds).

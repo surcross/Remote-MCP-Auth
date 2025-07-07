@@ -1,6 +1,6 @@
-import { Request, Response, Router } from 'express';
+import { json, Request, Response, Router } from 'express';
 
-import { mcpSseAuthMiddleware, mcpSseController, mcpStreamableController, oauthController } from './container';
+import { mcpAuthMiddleware, mcpSseController, mcpStreamableController, oauthController } from './container';
 
 export const router = Router();
 
@@ -10,13 +10,13 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 // SSE.
-router.get('/sse', mcpSseAuthMiddleware.requireAuth, mcpSseController.getSse);
-router.post('/messages', mcpSseAuthMiddleware.requireAuth, mcpSseController.postMessages);
+router.get('/sse', mcpAuthMiddleware.requireAuth, mcpSseController.getSse);
+router.post('/messages', mcpAuthMiddleware.requireAuth, mcpSseController.postMessages);
 
 // Streamable HTTP.
-router.post('/mcp', mcpSseAuthMiddleware.requireAuth, mcpStreamableController.postMcp);
-router.get('/mcp', mcpSseAuthMiddleware.requireAuth, mcpStreamableController.getMcp);
-router.delete('/mcp', mcpSseAuthMiddleware.requireAuth, mcpStreamableController.deleteMcp);
+router.post('/mcp', mcpAuthMiddleware.requireAuth, json(), mcpStreamableController.postMcp);
+router.get('/mcp', mcpAuthMiddleware.requireAuth, json(), mcpStreamableController.getMcp);
+router.delete('/mcp', mcpAuthMiddleware.requireAuth, json(), mcpStreamableController.deleteMcp);
 
 // Auth-related.
 router.get('/.well-known/oauth-authorization-server', oauthController.getWellKnown);

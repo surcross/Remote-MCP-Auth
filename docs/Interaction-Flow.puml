@@ -1,0 +1,67 @@
+@startuml Interaction Flow
+
+autonumber
+
+actor "<b>User</b>" as User #White
+participant "<b>AI Assistant</b>\n<b>(Claude)</b>" as Claude #FFE6CC
+
+box "Remote MCP Auth" #F5F5F5
+participant "<b>MCP Server</b>" as MCP #DAE8FC
+participant "<b>Authorization Server</b>" as Auth #DAE8FC
+end box
+
+User -> Claude: Open Claude
+activate Claude
+User -> Claude: Add integration
+
+group Authorization Flow
+  User -> Claude: Click "Connect"
+  Claude -> MCP: Discover Server Metadata
+  activate MCP
+
+  alt if not cached
+    MCP -> Auth: Get Server Metadata
+    activate Auth
+    Auth --> MCP: Return Server Metadata
+    deactivate Auth
+    MCP -> MCP: Cache Server Metadata
+  end
+
+  MCP --> Claude: Return Server Metadata
+  deactivate MCP
+
+  Claude -> Auth: Start authorization flow
+  activate Auth
+
+  Claude --> User: Redirect to authorization page
+
+  User -> Auth: Open authorization page
+  Auth --> User: Display authorization page
+
+  User -> Auth: Grant access permissions
+  Auth --> User: Redirect back to Claude with auth code
+
+  User -> Claude: Open Claude redirect URL with auth code
+  Claude -> Auth: Complete authorization flow
+  Auth -> Claude: Return access and refresh tokens
+  deactivate Auth
+  Claude -> MCP: Send MCP request with access token
+  activate MCP
+  MCP -> MCP: Validate token
+  MCP --> Claude: Confirm authorization
+  deactivate MCP
+  Claude --> User: Confirm successful connection
+end
+
+User -> Claude: Send prompt triggering integration
+Claude -> MCP: Send MCP request with access token
+activate MCP
+MCP -> MCP: Validate token
+MCP -> MCP: Handle MCP request
+MCP --> Claude: Return MCP response
+deactivate MCP
+Claude -> Claude: AI magic
+Claude --> User: Return response
+deactivate Claude
+
+@enduml

@@ -1,0 +1,52 @@
+@startuml Authorization Flow
+
+autonumber
+
+participant "<b>Browser</b>" as Browser #LightGray
+participant "<b>AI Assistant</b>\n<b>(Claude)</b>" as Claude #FFE6CC
+
+box "Remote MCP Auth" #F5F5F5
+participant "<b>MCP Server</b>" as MCP #DAE8FC
+participant "<b>Authorization Server</b>" as Auth #DAE8FC
+end box
+
+Browser -> Claude: Click "Connect"
+activate Claude
+
+Claude -> MCP: <b>GET /.well-known/oauth-authorization-server</b>\nServer Metadata Discovery
+activate MCP
+MCP -> Auth: <b>GET /.well-known/oauth-authorization-server</b>\nServer Metadata Discovery
+activate Auth
+Auth --> MCP: Return <b>Server Metadata</b>
+deactivate Auth
+MCP --> Claude: Return <b>Server Metadata</b>
+deactivate MCP
+
+Claude -> Auth: <b>POST /oauth/register</b>\nDynamic Client Registration
+activate Auth
+Auth --> Claude: Return client credentials (<b>client ID</b>)
+
+Claude -> Claude: Generate PKCE parameters\n(<b>code challenge</b>, <b>code verifier</b>)
+
+Claude -> Browser: Redirect to Authorization endpoint\nwith <b>client ID</b>, <b>code challenge</b>
+
+Browser -> Auth: <b>GET /oauth/authorize</b>\nAuthorization
+Auth --> Browser: Display <b>authorization page</b>
+
+Browser -> Auth: <b>POST /oauth/authorize</b>\nAuthorization Processing
+Auth --> Browser: Redirect back to Claude with <b>code</b>
+
+Browser -> Claude: Open Claude redirect URL with <b>code</b>
+
+Claude -> Auth: <b>POST /oauth/token</b>\nToken\nwith <b>code</b>, <b>code verifier</b>
+Auth --> Claude: Return <b>access</b> and <b>refresh tokens</b>
+deactivate Auth
+Claude -> MCP: <b>GET /mcp</b> (Streamable HTTP)\nor <b>GET /sse</b> (SSE)\nwith <b>access token</b>
+activate MCP
+MCP -> MCP: Validate token
+MCP --> Claude: Confirm authorization
+deactivate MCP
+Claude --> Browser: Confirm successful connection
+deactivate Claude
+
+@enduml

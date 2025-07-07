@@ -1,7 +1,8 @@
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
 import { McpServer } from '../mcp/McpServer';
+import { McpAuthenticatedRequest } from '../middlewares/McpAuthMiddleware';
 
 interface Options {
   mcpServer: McpServer;
@@ -19,7 +20,7 @@ export class McpSseController {
     this.postMessages = this.postMessages.bind(this);
   }
 
-  public async getSse(req: Request, res: Response): Promise<void> {
+  public async getSse(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     const transport = new SSEServerTransport('/messages', res);
 
     this.transportsMap.set(transport.sessionId, transport);
@@ -31,7 +32,7 @@ export class McpSseController {
     await this.mcpServer.connect(transport);
   }
 
-  public async postMessages(req: Request, res: Response): Promise<void> {
+  public async postMessages(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     const { sessionId } = req.query;
 
     if (!sessionId || typeof sessionId !== 'string') {

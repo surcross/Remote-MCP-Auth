@@ -7,11 +7,11 @@ interface Options {
   tokenService: TokenService;
 }
 
-interface McpSseAuthenticatedRequest extends Request {
+export interface McpAuthenticatedRequest extends Request {
   auth?: AuthInfo;
 }
 
-export class McpSseAuthMiddleware {
+export class McpAuthMiddleware {
   private readonly tokenService: TokenService;
 
   constructor({ tokenService }: Options) {
@@ -20,7 +20,7 @@ export class McpSseAuthMiddleware {
     this.requireAuth = this.requireAuth.bind(this);
   }
 
-  public requireAuth(req: McpSseAuthenticatedRequest, res: Response, next: NextFunction): void {
+  public requireAuth(req: McpAuthenticatedRequest, res: Response, next: NextFunction): void {
     if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer ')) {
       res.status(401).send('Unauthorized');
       return;

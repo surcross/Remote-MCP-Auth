@@ -6,7 +6,7 @@ import { OAuthController } from './controllers/OAuthController';
 
 import { McpServer } from './mcp/McpServer';
 
-import { McpSseAuthMiddleware } from './middlewares/McpSseAuthMiddleware';
+import { McpAuthMiddleware } from './middlewares/McpAuthMiddleware';
 
 import { ArmyService } from './services/ArmyService';
 import { StudentService } from './services/StudentService';
@@ -26,7 +26,7 @@ const mcpServer = new McpServer({
   studentService,
 });
 
-export const mcpSseAuthMiddleware = new McpSseAuthMiddleware({
+export const mcpAuthMiddleware = new McpAuthMiddleware({
   tokenService,
 });
 

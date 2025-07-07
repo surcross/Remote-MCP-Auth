@@ -1,9 +1,10 @@
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import { randomUUID } from 'crypto';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
 import { McpServer } from '../mcp/McpServer';
+import { McpAuthenticatedRequest } from '../middlewares/McpAuthMiddleware';
 
 interface Options {
   mcpServer: McpServer;
@@ -22,7 +23,7 @@ export class McpStreamableController {
     this.deleteMcp = this.deleteMcp.bind(this);
   }
 
-  public async postMcp(req: Request, res: Response): Promise<void> {
+  public async postMcp(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     const sessionId = req.headers['mcp-session-id'];
     let transport: StreamableHTTPServerTransport;
 
@@ -59,15 +60,15 @@ export class McpStreamableController {
     await transport.handleRequest(req, res, req.body);
   }
 
-  public getMcp(req: Request, res: Response): Promise<void> {
+  public getMcp(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     return this.handleSessionRequest(req, res);
   }
 
-  public deleteMcp(req: Request, res: Response): Promise<void> {
+  public deleteMcp(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     return this.handleSessionRequest(req, res);
   }
 
-  private async handleSessionRequest(req: Request, res: Response): Promise<void> {
+  private async handleSessionRequest(req: McpAuthenticatedRequest, res: Response): Promise<void> {
     const sessionId = req.headers['mcp-session-id'];
 
     if (!sessionId || !this.transportsMap.has(sessionId as string)) {

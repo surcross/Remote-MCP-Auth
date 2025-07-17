@@ -1,7 +1,22 @@
 # Remote MCP Auth
 
-Proof of concept project implementing
-[Remote MCP Authorization](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization) for Claude.
+Build Remote MCP with Authorization:
+[Medium](https://loginov-rocks.medium.com/build-remote-mcp-with-authorization-a2f394c669a8)
+
+This repository provides a complete, working reference implementation of a **remote Model Context Protocol (MCP)
+server** supporting **OAuth 2.1** authorization according to the
+[official documentation](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization) using vanilla
+**JavaScript** (**Node.js**) for the **Authorization Server** and **TypeScript** with **Express.js** and the
+[**official TypeScript SDK**](https://github.com/modelcontextprotocol/typescript-sdk) for the **MCP Server**,
+implementing both **Server-Sent Events (SSE)** and **Streamable HTTP** transports.
+
+While the MCP specification describes authorization in theory, practical implementation guidance has been limited -
+this codebase demonstrates every piece of the _authorization flow from server metadata discovery to passing
+authentication context through to your MCP tools_.
+
+Built as a "Battle School Computer", it provides personalized tactical data based on authenticated user identity and
+serves as a solid foundation you can extend with your own data sources, APIs, and business logic to create secure,
+user-specific AI integrations.
 
 ## Quick Start
 

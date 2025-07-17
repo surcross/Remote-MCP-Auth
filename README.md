@@ -18,6 +18,38 @@ Built as a "Battle School Computer", it provides personalized tactical data base
 serves as a solid foundation you can extend with your own data sources, APIs, and business logic to create secure,
 user-specific AI integrations.
 
+### Key Features
+
+_**Quick Disclaimer**_: This is a reference implementation focused on demonstrating MCP authorization, not building
+production systems. While it includes proper architectural patterns, many validations, security hardening measures, and
+robust error handling are intentionally simplified to keep focus on the core authorization flow. The accompanying
+[article](https://loginov-rocks.medium.com/build-remote-mcp-with-authorization-a2f394c669a8) calls out important
+production considerations throughout the implementation.
+
+1. **Complete OAuth 2.1 Flow** - implements all required endpoints: Server Metadata Discovery, Dynamic Client
+   Registration, Authorization, Authorization Processing, and Token Exchange with PKCE support.
+2. **Dual Transport Support:** works with both **Server-Sent Events (SSE)** and **Streamable HTTP** transports, with
+   SSE considered deprecated but included for completeness.
+3. **Authorization Context Flow:** demonstrates how authentication context flows from the OAuth middleware through to
+   individual MCP tools, enabling personalized responses.
+4. **Zero Dependencies + Official SDK:** **Authorization Server** uses no external dependencies, while **MCP Server**
+   leverages the [**official TypeScript SDK**](https://github.com/modelcontextprotocol/typescript-sdk) without custom
+   and/or third-party dependencies.
+5. **Production-ready Architecture:** separates the **Authorization Server** from the **MCP Server** for reusability
+   with proper session management.
+6. **JWT Token Management:** includes access token validation, refresh token support, and proper token lifecycle
+   management.
+7. **Battle School Computer Example:** three working MCP tools (`get-my-army`, `get-opponent-army`, `get-student-info`)
+   that demonstrate user-specific and public data access patterns.
+8. **Claude Integration:** tested and verified to work seamlessly with Claude's remote MCP integrations.
+9. **Comprehensive Examples:** includes real request/response
+   [fixtures](https://github.com/loginov-rocks/Remote-MCP-Auth/tree/main/oauth-function/src/__fixtures__) captured
+   from Claude sessions.
+10. **Infrastructure as Code:** complete
+    [CloudFormation template](https://github.com/loginov-rocks/Remote-MCP-Auth/blob/main/infrastructure/cloudformation.json)
+    for **AWS** deployment with automated **DynamoDB** setup, **API Gateway**, and **Lambda** configuration for the
+    **Authorization Server**.
+
 ## Quick Start
 
 ### AWS

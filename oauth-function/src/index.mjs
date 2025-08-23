@@ -14,7 +14,7 @@ const routes = [
   { method: 'post', path: '/oauth/token', handler: postTokenHandler },
 ];
 
-export const handler = async (event) => {
+export const handler = async (event) => {  //export 是暴露函数用的.
   console.log('event', JSON.stringify(event));
 
   const { requestContext: { http } } = event;

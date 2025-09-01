@@ -20,18 +20,21 @@ export const postTokenHandler = async (event) => {
   let studentId = null;
 
   if (params.grant_type === 'authorization_code') {
-    if (!params.code || !params.code_verifier) {
+    if (!params.code || !params.code_verifier) { 
       return { statusCode: 400 };
     }
 
     let code;
     try {
-      code = await findCode(params.code);
+      code = await findCode(params.code); //从authcodestable读了一条出来,因为aws sdk 封装过,所以读出来就是这么个js对象里面
+                                       //包含code,codeChallenge,expiration,studentId 
     } catch (error) {
       console.error(error);
       return { statusCode: 500 };
     }
 
+    console.log('查询到的code对象结构:', JSON.stringify(code, null, 2)); //打印code对象结构方便调试
+    
     if (!code || !code.code || !code.codeChallenge || !code.studentId) {
       return { statusCode: 400 };
     }
@@ -64,10 +67,11 @@ export const postTokenHandler = async (event) => {
     return { statusCode: 400 };
   }
 
+  //这里是为后续的mcp游戏的代码做准备的. 
   const { accessToken, expiresIn } = createAccessToken(studentId);
-  const { refreshToken } = createRefreshToken(studentId);
+  const { refreshToken } = createRefreshToken(studentId); //refreshtoken的逻辑就不管了.先把主体认证授权流程搞定.
   // Comes from the previously stored params.
-  const scope = 'claudeai';
+  const scope = 'claudeai';//这里的作用域语法是什么? 没什么语法 感觉和well-known差不多,就是通知你一下. 是用于哪里的. 
 
   return {
     statusCode: 200,
@@ -78,6 +82,6 @@ export const postTokenHandler = async (event) => {
       expires_in: expiresIn,
       refresh_token: refreshToken,
       scope: scope,
-    }),
+    })
   };
 };

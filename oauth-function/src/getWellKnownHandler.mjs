@@ -1,4 +1,5 @@
-export const getWellKnownHandler = (event) => {
+export const getWellKnownHandler = (event) => {  //试图让claude 通过cli aws 查看 sdk 中相关的内容容让我理解 .
+                                                // 它好像看不到源码,但是它从日志中找了  event对象的完整结构....
   const issuer = `https://${event.requestContext.domainName}`;
 
   return {
